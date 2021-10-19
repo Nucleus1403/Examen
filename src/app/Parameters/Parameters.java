@@ -13,23 +13,19 @@ public class Parameters implements IParameters {
     // The number of mines at generated is the grid size * this constant
     private static final double POPULATION_CONSTANT = 1.7;
 
-    public int GetGridSize()
-    {
+    public int GetGridSize() {
         return GRID_SIZE;
     }
 
-    public int GetMineCount()
-    {
+    public int GetMineCount() {
         return MINE;
     }
 
-    public int GetPixelSize()
-    {
+    public int GetPixelSize() {
         return SIZE;
     }
 
-    public double GetPopulationMultiplier()
-    {
+    public double GetPopulationMultiplier() {
         return POPULATION_CONSTANT;
     }
 }

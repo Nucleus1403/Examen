@@ -12,7 +12,8 @@ public class AppRun {
             // applies the look of OS making it look native.
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-        } catch (Exception ignore) { }
+        } catch (Exception ignore) {
+        }
         // Launch the program
         new Minesweeper();
     }

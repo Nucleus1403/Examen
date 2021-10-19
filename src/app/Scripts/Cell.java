@@ -12,7 +12,7 @@ public class Cell extends JButton {
     private int value;
 
     public Cell(final int row, final int col,
-         final ActionListener actionListener) {
+                final ActionListener actionListener) {
         this.row = row;
         this.col = col;
         addActionListener(actionListener);

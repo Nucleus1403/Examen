@@ -15,7 +15,7 @@ public class Minesweeper {
 
     public static Cell[][] cells;
 
-    private JFrame  frame;
+    private JFrame frame;
     private JButton reset;
     private JButton giveUp;
     private Parameters p;
@@ -34,7 +34,7 @@ public class Minesweeper {
     public Minesweeper() {
         p = new Parameters();
 
-        this.gridSize =p.GetGridSize();
+        this.gridSize = p.GetGridSize();
         cells = new Cell[p.GetGridSize()][p.GetGridSize()];
 
 
@@ -89,8 +89,8 @@ public class Minesweeper {
     private void CreateMines() {
         ResetAllCells();
 
-        final int    mineCount = (int) p.GetPopulationMultiplier() * gridSize;
-        final Random random    = new Random();
+        final int mineCount = (int) p.GetPopulationMultiplier() * gridSize;
+        final Random random = new Random();
 
         // Map all (row, col) pairs to unique integers
         Set<Integer> positions = new HashSet<>(gridSize * gridSize);
@@ -103,8 +103,8 @@ public class Minesweeper {
         // Initialize mines
         for (int index = 0; index < mineCount; index++) {
             int choice = random.nextInt(positions.size());
-            int row    = choice / gridSize;
-            int col    = choice % gridSize;
+            int row = choice / gridSize;
+            int col = choice % gridSize;
             cells[row][col].SetValue(p.GetMineCount());
             positions.remove(choice);
         }
