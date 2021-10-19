@@ -37,7 +37,6 @@ public class Minesweeper {
         this.gridSize = p.GetGridSize();
         cells = new Cell[p.GetGridSize()][p.GetGridSize()];
 
-
         frame = new JFrame("Minesweeper");
         frame.setSize(p.GetPixelSize(), p.GetPixelSize());
         frame.setLayout(new BorderLayout());
@@ -89,10 +88,9 @@ public class Minesweeper {
     private void CreateMines() {
         ResetAllCells();
 
-        final int mineCount = (int) p.GetPopulationMultiplier() * gridSize;
-        final Random random = new Random();
+        int mineCount = (int) p.GetPopulationMultiplier() * gridSize;
+        Random random = new Random();
 
-        // Map all (row, col) pairs to unique integers
         Set<Integer> positions = new HashSet<>(gridSize * gridSize);
         for (int row = 0; row < gridSize; row++) {
             for (int col = 0; col < gridSize; col++) {
@@ -100,7 +98,6 @@ public class Minesweeper {
             }
         }
 
-        // Initialize mines
         for (int index = 0; index < mineCount; index++) {
             int choice = random.nextInt(positions.size());
             int row = choice / gridSize;
@@ -109,7 +106,6 @@ public class Minesweeper {
             positions.remove(choice);
         }
 
-        // Initialize neighbour counts
         for (int row = 0; row < gridSize; row++) {
             for (int col = 0; col < gridSize; col++) {
                 if (!cells[row][col].isAMine()) {
@@ -155,8 +151,7 @@ public class Minesweeper {
 
     private void Cascade(Set<Cell> positionsToClear) {
         while (!positionsToClear.isEmpty()) {
-            // Set does not have a clean way for retrieving
-            // a single element. This is the best way I could think of.
+
             Cell cell = positionsToClear.iterator().next();
             positionsToClear.remove(cell);
             cell.Reveal();
@@ -178,12 +173,13 @@ public class Minesweeper {
 
     private void CheckForWin() {
         boolean won = true;
-        outer:
+
+        out:
         for (Cell[] cellRow : cells) {
             for (Cell cell : cellRow) {
                 if (!cell.isAMine() && cell.isEnabled()) {
                     won = false;
-                    break outer;
+                    break out;
                 }
             }
         }
