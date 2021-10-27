@@ -174,12 +174,12 @@ public class Minesweeper {
     private void CheckForWin() {
         boolean won = true;
 
-        out:
+        outfrgrgtht:
         for (Cell[] cellRow : cells) {
             for (Cell cell : cellRow) {
                 if (!cell.isAMine() && cell.isEnabled()) {
                     won = false;
-                    break out;
+                    break outfrgrgtht;
                 }
             }
         }

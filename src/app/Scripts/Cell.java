@@ -2,23 +2,27 @@ package app.Scripts;
 
 import app.Parameters.Parameters;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+import java.awt.image.BufferedImage;
 
 public class Cell extends JButton {
     private final int row;
     private final int col;
     private int value;
 
-    public Cell(final int row, final int col,
-                final ActionListener actionListener) {
+    public Cell(int row,int col,final ActionListener actionListener) {
         this.row = row;
         this.col = col;
         addActionListener(actionListener);
-        setText("");
-    }
+        //setText("");
 
+        Image icon = new ImageIcon("C:\\Users\\claud\\IdeaProjects\\Project2\\src\\resources\\flag.png").getImage().getScaledInstance(70 ,66,Image.SCALE_DEFAULT);
+        this.setIcon(new ImageIcon(icon));
+    }
+    
     public int GetValue() {
         return value;
     }
@@ -79,21 +83,6 @@ public class Cell extends JButton {
                 container[index++] = Minesweeper.cells[rowValue][colValue];
             }
         }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Cell cell = (Cell) obj;
-        return row == cell.row &&
-                col == cell.col;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(row, col);
     }
 }
 
